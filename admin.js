@@ -23,79 +23,87 @@ document.addEventListener('DOMContentLoaded', () => {
         passwordInput.value = ''; // Clear password input
     });
 
-    const fileInput = document.getElementById('fileInput');
-    const uploadButton = document.getElementById('uploadButton');
+    const uploadButtons = document.querySelectorAll('.uploadButton');
     const updateInput = document.getElementById('updateInput');
     const updateButton = document.getElementById('updateButton');
-    const fileList = document.getElementById('fileList');
     let fileToUpdate = null; // Variable to hold the file to be updated
 
-    function loadFiles() {
-        const files = JSON.parse(localStorage.getItem('pdfFiles') || '[]');
+    function loadFiles(category) {
+        const files = JSON.parse(localStorage.getItem(category) || '[]');
+        const fileList = document.getElementById(`${category}List`);
         fileList.innerHTML = '';
         files.forEach(file => {
             const li = document.createElement('li');
             li.innerHTML = `
                 <a href="${file.url}" target="_blank">${file.name}</a>
-                <button class="delete" data-name="${file.name}">Delete</button>
-                <button class="update" data-name="${file.name}">Update</button>
+                <button class="delete" data-category="${category}" data-name="${file.name}">Delete</button>
+                <button class="update" data-category="${category}" data-name="${file.name}">Update</button>
             `;
             fileList.appendChild(li);
         });
     }
 
-    function saveFile(file) {
-        const files = JSON.parse(localStorage.getItem('pdfFiles') || '[]');
+    function saveFile(category, file) {
+        const files = JSON.parse(localStorage.getItem(category) || '[]');
         files.push(file);
-        localStorage.setItem('pdfFiles', JSON.stringify(files));
-        loadFiles();
+        localStorage.setItem(category, JSON.stringify(files));
+        loadFiles(category);
     }
 
-    function deleteFile(name) {
-        let files = JSON.parse(localStorage.getItem('pdfFiles') || '[]');
+    function deleteFile(category, name) {
+        let files = JSON.parse(localStorage.getItem(category) || '[]');
         files = files.filter(file => file.name !== name);
-        localStorage.setItem('pdfFiles', JSON.stringify(files));
-        loadFiles();
+        localStorage.setItem(category, JSON.stringify(files));
+        loadFiles(category);
     }
 
-    function updateFile(oldName, newFile) {
-        let files = JSON.parse(localStorage.getItem('pdfFiles') || '[]');
+    function updateFile(category, oldName, newFile) {
+        let files = JSON.parse(localStorage.getItem(category) || '[]');
         files = files.map(file => file.name === oldName ? newFile : file);
-        localStorage.setItem('pdfFiles', JSON.stringify(files));
-        loadFiles();
+        localStorage.setItem(category, JSON.stringify(files));
+        loadFiles(category);
     }
 
-    uploadButton.addEventListener('click', () => {
-        if (fileInput.files.length === 0) {
-            alert('Please select a file to upload.');
-            return;
-        }
-        
-        const file = fileInput.files[0];
-        const reader = new FileReader();
+    uploadButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const category = event.target.getAttribute('data-category');
+            const fileInput = document.getElementById(`${category}Input`);
 
-        reader.onload = function(event) {
-            const fileUrl = URL.createObjectURL(file);
-            saveFile({
-                name: file.name,
-                url: fileUrl
-            });
-            fileInput.value = '';
-        };
+            if (fileInput.files.length === 0) {
+                alert('Please select a file to upload.');
+                return;
+            }
 
-        reader.readAsArrayBuffer(file);
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const fileUrl = URL.createObjectURL(file);
+                saveFile(category, {
+                    name: file.name,
+                    url: fileUrl
+                });
+                fileInput.value = '';
+            };
+
+            reader.readAsArrayBuffer(file);
+        });
     });
 
-    fileList.addEventListener('click', (event) => {
-        if (event.target.classList.contains('delete')) {
-            const fileName = event.target.getAttribute('data-name');
-            deleteFile(fileName);
-        } else if (event.target.classList.contains('update')) {
-            const fileName = event.target.getAttribute('data-name');
-            fileToUpdate = fileName; // Set the file to update
-            updateInput.style.display = 'block'; // Show the file input for update
-            updateButton.style.display = 'block'; // Show the update button
-        }
+    document.querySelectorAll('.categories').forEach(categoryContainer => {
+        categoryContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('delete')) {
+                const category = event.target.getAttribute('data-category');
+                const fileName = event.target.getAttribute('data-name');
+                deleteFile(category, fileName);
+            } else if (event.target.classList.contains('update')) {
+                const category = event.target.getAttribute('data-category');
+                const fileName = event.target.getAttribute('data-name');
+                fileToUpdate = { category, fileName }; // Set the file to update
+                updateInput.style.display = 'block'; // Show the file input for update
+                updateButton.style.display = 'block'; // Show the update button
+            }
+        });
     });
 
     updateButton.addEventListener('click', () => {
@@ -114,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         reader.onload = function(event) {
             const fileUrl = URL.createObjectURL(newFile);
-            updateFile(fileToUpdate, {
+            updateFile(fileToUpdate.category, fileToUpdate.fileName, {
                 name: newFile.name,
                 url: fileUrl
             });
@@ -127,9 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
         reader.readAsArrayBuffer(newFile);
     });
 
+    // Load files for each category on page load
+    ['programming', 'devops', 'hacking', 'databases'].forEach(loadFiles);
+
     logoutButton.addEventListener('click', () => {
         window.location.href = 'index.html'; // Redirect to home page on logout
     });
-
-    loadFiles();
 });

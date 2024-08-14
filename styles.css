@@ -1,3 +1,85 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f0ff; /* Light blue background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: fadeIn 1s ease-in;
+    padding-top: 120px; /* Space for the header */
+}
+
+/* Container for the entire section */
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 100%; /* Allow container to take full width */
+    width: 800px; /* Fixed width for larger screens */
+    margin: 0 auto; /* Center the container */
+    animation: slideIn 0.5s ease-out;
+    text-align: center; /* Center-align the text */
+}
+
+/* Categories Container */
+.categories {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-between; /* Space out the categories evenly */
+    gap: 20px; /* Space between categories */
+}
+
+/* Individual Category Styling */
+.category {
+    background-color: #f9f9f9; /* Light background for contrast */
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 10px;
+    flex: 1 1 calc(33.333% - 20px); /* Adjust width to fit 3 items per row */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Center align text */
+}
+
+.category h3 {
+    margin-top: 0;
+    color: #6f42c1; /* Purple heading color */
+    font-size: 1.2em; /* Slightly smaller font size to fit better */
+}
+
+.category ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+
+.category:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 767px) {
+    .categories {
+        flex-direction: column; /* Stack categories vertically on small screens */
+        align-items: center; /* Center items horizontally */
+    }
+    .category {
+        width: 100%; /* Full width on smaller screens */
+        max-width: 400px; /* Limit the width */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .category {
+        flex: 1 1 calc(50% - 20px); /* 2 items per row on tablets */
+    }
+}
+
 /* Style for the header and logo outside the body */
 .main-header {
     position: fixed;
@@ -31,272 +113,10 @@
     height: auto;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #e0f0ff; /* Light blue background */
-    margin: 0;
-    padding-top: 120px; /* Space for the header */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 120px); /* Adjust height to exclude header space */
-    animation: fadeIn 1s ease-in;
-}
-
-.container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
-    animation: slideIn 0.5s ease-out;
-}
-
-h2 {
-    margin-top: 0;
-    color: #6f42c1; /* Purple color for headings */
-    transition: color 0.3s ease;
-}
-
-/* Other styles... */
-
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #e0f0ff; /* Light blue background */
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    animation: fadeIn 1s ease-in;
-}
-
-.container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
-    animation: slideIn 0.5s ease-out;
-}
-
-h1 {
-    margin-top: 0;
-    color: #6f42c1; /* Purple color for headings */
-    transition: color 0.3s ease;
-}
-
-h1:hover {
-    color: #5a2d81; /* Darker purple on hover */
-}
-
-input[type="file"] {
-    margin-bottom: 10px;
-    transition: border-color 0.3s ease;
-}
-
-input[type="file"]:focus {
-    border-color: #6f42c1; /* Purple color on focus */
-    outline: none;
-}
-
-button {
-    background-color: #007bff; /* Blue color for buttons */
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: scale(1.05); /* Slightly enlarge button on hover */
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    animation: fadeIn 1s ease-in;
-}
-
-li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease;
-}
-
-li:hover {
-    background-color: #f1f1f1; /* Light grey background on hover */
-}
-
-li a {
-    text-decoration: none;
-    color: #6f42c1; /* Purple color for links */
-    transition: color 0.3s ease;
-}
-
-li a:hover {
-    color: #5a2d81; /* Darker purple on hover */
-}
-
-button.delete {
-    background-color: #dc3545; /* Red color for delete button */
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-button.delete:hover {
-    background-color: #c82333; /* Darker red on hover */
-    transform: scale(1.05); /* Slightly enlarge button on hover */
-}
-
-button.update {
-    background-color: #28a745; /* Green color for update button */
-    margin-left: 10px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-button.update:hover {
-    background-color: #218838; /* Darker green on hover */
-    transform: scale(1.05); /* Slightly enlarge button on hover */
-}
-
-.admin-link {
-    display: inline-block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #6f42c1; /* Purple color for admin link */
-    transition: color 0.3s ease;
-}
-
-.admin-link:hover {
-    color: #5a2d81; /* Darker purple on hover */
-    text-decoration: underline;
-}
-
-/* Existing styles... */
-
-.download {
-    background: linear-gradient(145deg, #007bff, #0056b3); /* Gradient background for a more dynamic look */
-    color: #fff;
-    border: none;
-    padding: 10px 20px; /* Larger padding for better touch support */
-    border-radius: 6px; /* Softer, more rounded corners */
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    font-size: 14px; /* Adjust font size as needed */
-    margin-left: 10px;
-    display: inline-block;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-}
-
-.download:hover {
-    background: linear-gradient(145deg, #0056b3, #004494); /* Darker gradient on hover */
-    transform: scale(1.05); /* Slightly enlarge button on hover */
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Slightly deeper shadow on hover */
-}
-
-.download:active {
-    background: linear-gradient(145deg, #004494, #003366); /* Even darker gradient when pressed */
-    transform: scale(0.98); /* Slightly shrink button on press */
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Reduce shadow on press */
-}
-
-.download:focus {
-    outline: 2px solid #0056b3; /* Add focus outline for accessibility */
-    outline-offset: 3px;
-}
-
-
-/* Styles for the login container */
-#login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: linear-gradient(to right, #e0f7fa, #80deea); /* Gradient background */
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    padding: 40px;
-    animation: fadeIn 1s ease-in;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-}
-
-/* Styles for the heading in the login container */
-#login-container h1 {
-    color: #4a148c; /* Deep purple for heading */
-    margin-bottom: 20px;
-    font-size: 28px;
-    font-family: 'Arial', sans-serif;
-}
-
-/* Styles for the password input field */
-#passwordInput {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 2px solid #4a148c; /* Deep purple border */
-    border-radius: 5px;
-    font-size: 16px;
-    color: #333;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#passwordInput::placeholder {
-    color: #888;
-}
-
-#passwordInput:focus {
-    border-color: #d32f2f; /* Red border on focus */
-    box-shadow: 0 0 8px rgba(211, 47, 47, 0.6); /* Red glow on focus */
-    outline: none;
-}
-
-/* Admin Panel Styles */
-#admin-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background: linear-gradient(to right, #e0f7fa, #80deea); /* Gradient background */
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    padding: 40px;
-    animation: fadeIn 1s ease-in;
-    width: 90%;
-    max-width: 800px;
-    text-align: center;
-}
-
-#admin-container h1 {
-    color: #4a148c; /* Deep purple for heading */
-    margin-bottom: 20px;
-    font-size: 28px;
-    font-family: 'Arial', sans-serif;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-}
-
-button, input[type="file"] {
+/* Input and button styling */
+input[type="file"], #passwordInput {
     margin: 10px;
     border-radius: 8px; /* Rounded corners */
-}
-
-input[type="file"] {
     border: 2px solid #4a148c;
     padding: 12px;
     background-color: #fff;
@@ -304,7 +124,7 @@ input[type="file"] {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input[type="file"]:focus {
+input[type="file"]:focus, #passwordInput:focus {
     border-color: #d32f2f; /* Red border on focus */
     outline: none;
     box-shadow: 0 0 8px rgba(211, 47, 47, 0.6); /* Red glow on focus */
@@ -369,17 +189,10 @@ button.logout:active {
     transform: scale(0.98);
 }
 
-/* Additional styling */
-input[type="file"] {
-    display: block;
-    margin: 0 auto;
-    width: 80%;
-    max-width: 300px;
-}
-
+/* File list styling */
 #fileList {
     width: 100%;
-    max-width: 600px;
+    max-width: 800px;
     margin-top: 20px;
 }
 
@@ -405,41 +218,7 @@ input[type="file"] {
     text-decoration: underline;
 }
 
-
-
 /* Keyframes for animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Keyframes for animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateY(-20px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-
-
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -461,49 +240,41 @@ input[type="file"] {
 }
 
 /* Media queries for different screen sizes */
-
-
-
-/* Mobile (320px to 479px) */
 @media (max-width: 479px) {
     body {
         padding-top: 60px;
     }
     .container {
-        max-width: 280px;
+        max-width: 100%;
     }
     #fileList {
-        max-width: 280px;
+        max-width: 100%;
     }
     button {
         padding: 8px 12px;
     }
 }
 
-/* Mobile (480px to 768px) */
 @media (min-width: 480px) and (max-width: 767px) {
     body {
         padding-top: 80px;
     }
     .container {
-        max-width: 420px;
+        max-width: 100%;
     }
     #fileList {
-        max-width: 420px;
+        max-width: 100%;
     }
     button {
         padding: 10px 15px;
     }
 }
 
-/* Tablet (768px to 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
     body {
         padding-top: 120px;
     }
     .container {
-        max-width: 640px;
+        max-width: 100%;
     }
 }
-
-
