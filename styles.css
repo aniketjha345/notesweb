@@ -18,37 +18,37 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 100%; /* Allow container to take full width */
+    max-width: 100%;
     width: 800px; /* Fixed width for larger screens */
     margin: 0 auto; /* Center the container */
     animation: slideIn 0.5s ease-out;
-    text-align: center; /* Center-align the text */
+    text-align: center;
 }
 
 /* Categories Container */
 .categories {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap to the next line */
-    justify-content: space-between; /* Space out the categories evenly */
-    gap: 20px; /* Space between categories */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 /* Individual Category Styling */
 .category {
-    background-color: #f9f9f9; /* Light background for contrast */
-    border: 1px solid #ddd; /* Subtle border */
-    border-radius: 8px; /* Rounded corners */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 10px;
     flex: 1 1 calc(33.333% - 20px); /* Adjust width to fit 3 items per row */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center; /* Center align text */
+    text-align: center;
 }
 
 .category h3 {
     margin-top: 0;
-    color: #6f42c1; /* Purple heading color */
-    font-size: 1.2em; /* Slightly smaller font size to fit better */
+    color: #6f42c1;
+    font-size: 1.2em;
 }
 
 .category ul {
@@ -58,29 +58,11 @@ body {
 }
 
 .category:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Media Queries for Responsive Design */
-@media (max-width: 767px) {
-    .categories {
-        flex-direction: column; /* Stack categories vertically on small screens */
-        align-items: center; /* Center items horizontally */
-    }
-    .category {
-        width: 100%; /* Full width on smaller screens */
-        max-width: 400px; /* Limit the width */
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-    .category {
-        flex: 1 1 calc(50% - 20px); /* 2 items per row on tablets */
-    }
-}
-
-/* Style for the header and logo outside the body */
+/* Header Styling */
 .main-header {
     position: fixed;
     top: 0;
@@ -96,8 +78,8 @@ body {
 
 .main-header h1 {
     font-size: 3em;
-    color: #6f42c1; /* Purple color for heading */
-    margin: 0 auto; /* Center the text */
+    color: #6f42c1;
+    margin: 0 auto;
     text-align: center;
     flex-grow: 1;
 }
@@ -105,18 +87,18 @@ body {
 .main-header .logo {
     position: absolute;
     top: 10px;
-    left: 20px; /* Move the logo to the left */
+    left: 20px;
 }
 
 #logoImage {
-    max-width: 80px; /* Adjust size as needed */
+    max-width: 80px;
     height: auto;
 }
 
-/* Input and button styling */
+/* Input and Button Styling */
 input[type="file"], #passwordInput {
     margin: 10px;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
     border: 2px solid #4a148c;
     padding: 12px;
     background-color: #fff;
@@ -125,17 +107,17 @@ input[type="file"], #passwordInput {
 }
 
 input[type="file"]:focus, #passwordInput:focus {
-    border-color: #d32f2f; /* Red border on focus */
+    border-color: #d32f2f;
     outline: none;
-    box-shadow: 0 0 8px rgba(211, 47, 47, 0.6); /* Red glow on focus */
+    box-shadow: 0 0 8px rgba(211, 47, 47, 0.6);
 }
 
 button {
-    background-color: #4a148c; /* Deep purple */
+    background-color: #4a148c;
     color: #fff;
     border: none;
     padding: 12px 20px;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     margin: 10px;
@@ -143,7 +125,7 @@ button {
 }
 
 button:hover {
-    background-color: #6a1b9a; /* Lighter purple on hover */
+    background-color: #6a1b9a;
     transform: scale(1.05);
 }
 
@@ -152,28 +134,27 @@ button:active {
 }
 
 button.delete {
-    background-color: #d32f2f; /* Red for delete */
+    background-color: #d32f2f;
 }
 
 button.delete:hover {
-    background-color: #c62828; /* Darker red on hover */
+    background-color: #c62828;
 }
 
 button.update {
-    background-color: #388e3c; /* Green for update */
+    background-color: #388e3c;
 }
 
 button.update:hover {
-    background-color: #2c6b2f; /* Darker green on hover */
+    background-color: #2c6b2f;
 }
 
-/* Styles for the logout button */
 button.logout {
-    background-color: #fbc02d; /* Yellow for logout */
+    background-color: #fbc02d;
     color: #fff;
     border: none;
     padding: 12px 20px;
-    border-radius: 8px; /* Rounded corners */
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
     margin-top: 20px;
@@ -181,7 +162,7 @@ button.logout {
 }
 
 button.logout:hover {
-    background-color: #f9a825; /* Darker yellow on hover */
+    background-color: #f9a825;
     transform: scale(1.05);
 }
 
@@ -189,7 +170,7 @@ button.logout:active {
     transform: scale(0.98);
 }
 
-/* File list styling */
+/* File List Styling */
 #fileList {
     width: 100%;
     max-width: 800px;
@@ -218,7 +199,7 @@ button.logout:active {
     text-decoration: underline;
 }
 
-/* Keyframes for animations */
+/* Keyframes for Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -239,16 +220,17 @@ button.logout:active {
     }
 }
 
-/* Media queries for different screen sizes */
+/* Media Queries for Different Screen Sizes */
 @media (max-width: 479px) {
     body {
         padding-top: 60px;
     }
     .container {
-        max-width: 100%;
+        width: 100%;
+        padding: 10px;
     }
-    #fileList {
-        max-width: 100%;
+    .category {
+        flex: 1 1 100%; /* Full width on small screens */
     }
     button {
         padding: 8px 12px;
@@ -260,10 +242,11 @@ button.logout:active {
         padding-top: 80px;
     }
     .container {
-        max-width: 100%;
+        width: 100%;
+        padding: 15px;
     }
-    #fileList {
-        max-width: 100%;
+    .category {
+        flex: 1 1 calc(50% - 20px); /* 2 items per row on tablets */
     }
     button {
         padding: 10px 15px;
@@ -275,6 +258,16 @@ button.logout:active {
         padding-top: 120px;
     }
     .container {
-        max-width: 100%;
+        width: 100%;
+        padding: 20px;
+    }
+    .category {
+        flex: 1 1 calc(33.333% - 20px); /* 3 items per row on larger tablets */
+    }
+}
+
+@media (min-width: 1024px) {
+    .category {
+        flex: 1 1 calc(25% - 20px); /* 4 items per row on large screens */
     }
 }
