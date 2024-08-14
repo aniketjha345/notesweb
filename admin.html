@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Manage PDF Files</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="login-container">
+        <h1>Admin Login</h1>
+        <input type="password" id="passwordInput" placeholder="Enter password">
+        <button id="loginButton">Login</button>
+    </div>
+
+    <div id="admin-container" class="container" style="display: none;">
+        <h1>Manage PDF Files</h1>
+        <input type="file" id="fileInput" accept=".pdf">
+        <button id="uploadButton">Upload</button>
+        <ul id="fileList"></ul>
+        <input type="file" id="updateInput" accept=".pdf" style="display:none;">
+        <button id="updateButton" style="display:none;">Update</button>
+        <button id="logoutButton" class="logout">Logout</button>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
